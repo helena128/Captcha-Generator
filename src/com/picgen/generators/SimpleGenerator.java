@@ -9,10 +9,11 @@ public class SimpleGenerator implements Generatable {
 
     /**
      * returns generated string for captcha
-     * @param length - number of letters to generate
+     * @param min - min number of letters to generate
      * @return generated string of {@code length} characters
      */
-    public String getCaptchaString(int length) {
+    public String getCaptchaString(int min, int max) {
+        int length = generateNumberInRange(min, max);
         if (length < 3) throw new IllegalArgumentException();
 
         StringBuilder builder = new StringBuilder();
@@ -52,5 +53,17 @@ public class SimpleGenerator implements Generatable {
         if ((idx % 2 == 1) && ((int) c % 2 == 0))
             return Character.toLowerCase(c);
         return c;
+    }
+
+    /**
+     * Generates number in range
+     * @param min - lower bound
+     * @param max - upper bound
+     * @return - rnadom number between min and max
+     */
+    private int generateNumberInRange(int min, int max) {
+        Random random = new Random();
+        int rand = random.nextInt((max - min) + 1) + min;
+        return rand;
     }
 }
