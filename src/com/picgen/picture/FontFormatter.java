@@ -9,8 +9,8 @@ import java.util.Random;
  * Creates a random font
  */
 public class FontFormatter {
-    final private String[] fontNames = GraphicsEnvironment.
-            getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+    final private String[] fontNames = { "Arial", "Verdana", "Helvetica", "Comic Sans MS", "Times New Roman",
+                                        "Georgia", "Courier" };
 
     private SimpleGenerator simpleGenerator = new SimpleGenerator();
 

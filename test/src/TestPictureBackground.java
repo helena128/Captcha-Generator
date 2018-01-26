@@ -2,7 +2,9 @@ import com.picgen.picture.PicturePainter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.util.concurrent.TimeUnit;
 
 public class TestPictureBackground {
     public static void main(String... args) {
@@ -14,9 +16,10 @@ public class TestPictureBackground {
         JFrame frame = new JFrame();
         frame.getContentPane().setLayout(new FlowLayout());
         frame.getContentPane().add(new JLabel(new ImageIcon(img)));
-        frame.setSize(250, 250);
+        frame.setSize(300, 200);
         frame.setVisible(true);
         frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+
     }
 }
