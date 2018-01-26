@@ -1,3 +1,4 @@
+import com.picgen.GeneratorApplication;
 import com.picgen.picture.PicturePainter;
 import com.picgen.picture.PictureWriter;
 
@@ -11,14 +12,10 @@ public class TestPictureWriter {
         go();
     }
 
-    public static void go() throws IOException {
+    public static void go() {
         BufferedImage image = new PicturePainter().getBufferedImage(500, 400);
-        image = new PictureWriter().writeKeyWord(image, "Hi");
-        JFrame frame = new JFrame();
-        JLabel label = new JLabel(new ImageIcon(image));
-        frame.getContentPane().add(label, BorderLayout.CENTER);
-        frame.setSize(500, 400);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        image = new PictureWriter().writeKeyWord(image, "Hello!");
+        GeneratorApplication app = new GeneratorApplication();
+        app.displayImage(image, "Test Write");
     }
 }

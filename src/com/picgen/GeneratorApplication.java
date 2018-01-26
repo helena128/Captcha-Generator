@@ -8,18 +8,26 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ * Displays captcha picture and outputs its key to stdout
+ */
 public class GeneratorApplication extends JFrame {
     final static int FRAME_H = 400;
     final static int FRAME_W = 500;
+    final static String TITLE = "Captcha";
 
     public static void main(String[] args) {
         Generator generator = new Generator();
         System.out.println("Key: " + generator.getKey());
-        displayImage(generator.getImg());
+        displayImage(generator.getImg(), TITLE);
     }
 
-    protected static void displayImage(BufferedImage img) {
-        Frame frame = new JFrame("Captcha");
+    /**
+     * Displays image
+     * @param img - shows image
+     */
+    public static void displayImage(BufferedImage img, String title) {
+        Frame frame = new JFrame(title);
         JLabel label = new JLabel(new ImageIcon(img));
         frame.add(label, BorderLayout.CENTER);
         frame.setSize(FRAME_W, FRAME_H);
