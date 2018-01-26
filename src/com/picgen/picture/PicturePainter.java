@@ -21,7 +21,7 @@ public class PicturePainter {
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                p = getPixel();
+                p = getPixelColor();
                 img.setRGB(x, y, p);
             }
         }
@@ -33,7 +33,7 @@ public class PicturePainter {
      * Creates random color for pixel
      * @return color code
      */
-    private int getPixel() {
+    protected int getPixelColor() {
         Random rand = new Random();
         int a = rand.nextInt(255);
         int r = rand.nextInt(255);
