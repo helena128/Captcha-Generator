@@ -10,7 +10,7 @@ public class PicturePainter {
         int length = ((width + 5) * height) / 7;
         byte[] imgArr = new byte[length];
         DataBuffer dataBuffer = new DataBufferByte(imgArr, length);
-        WritableRaster rast = Raster.createPackedRaster(dataBuffer, width, height, 1, null);
+        WritableRaster rast = Raster.createPackedRaster(dataBuffer, width, height, 12, null);
 
         final int firstColor = 0xff0000;//generateFirstColor();
         final int secondColor = generateSecondColor(firstColor);
@@ -33,7 +33,10 @@ public class PicturePainter {
      */
     private int generateFirstColor() {
         Random rand = new Random();
-        return rand.nextInt(16777215);
+        int red = rand.nextInt(0xff);
+        int green = rand.nextInt(0xff);
+        int blue = rand.nextInt(0xff);
+        return ((red << 16) | (green << 8) | blue);
     }
 
     /**
