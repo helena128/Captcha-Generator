@@ -1,5 +1,6 @@
 package com.picgen.util;
 
+import com.picgen.generators.Generatable;
 import com.picgen.generators.SimpleGenerator;
 
 /**
@@ -8,7 +9,7 @@ import com.picgen.generators.SimpleGenerator;
 public class Generator {
     private int minLetter;
     private int maxLetter;
-    private SimpleGenerator simpleGenerator;
+    private Generatable simpleGenerator;
 
     public String getCaptchaKey() {
         return captchaKey;
