@@ -1,26 +1,35 @@
 package com.picgen.util;
 
-import com.picgen.generators.Generatable;
 import com.picgen.generators.SimpleGenerator;
+import com.picgen.picture.PicturePainter;
+import com.picgen.picture.PictureWriter;
+
+import java.awt.image.BufferedImage;
 
 /**
- * This class holds sequence of generated characters
+ * This class holds sequence of generated characters and a pic
  */
 public class Generator {
-    private int minLetter;
-    private int maxLetter;
-    private Generatable simpleGenerator;
+    private static final int MIN_LETTER = 5;
+    private static final int MAX_LETTER = 6;
+    private static final int PIC_HEIGHT = 200;
+    private static final int PIC_WIDTH = 300;
 
-    public String getCaptchaKey() {
-        return captchaKey;
+    private BufferedImage old = new PicturePainter().getBufferedImage(PIC_HEIGHT, PIC_WIDTH);
+
+    private String key;
+    private BufferedImage img;
+
+    public Generator() {
+        this.key = new SimpleGenerator().getCaptchaString(MIN_LETTER, MAX_LETTER);
+        this.img = new PictureWriter().writeKeyWord(old, this.key);
     }
 
-    private String captchaKey; // generated value
+    public String getKey() {
+        return key;
+    }
 
-    public Generator(int minLetter, int maxLetter) {
-        this.minLetter = minLetter;
-        this.maxLetter = maxLetter;
-        this.simpleGenerator = new SimpleGenerator();
-        this.captchaKey = simpleGenerator.getCaptchaString(minLetter, maxLetter);
+    public BufferedImage getImg() {
+        return img;
     }
 }

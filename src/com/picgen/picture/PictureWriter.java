@@ -15,10 +15,10 @@ public class PictureWriter {
 
         int[] coords = findPlace(img.getWidth(), img.getHeight());
 
-        // TODO: handle font color & style
+        // TODO: handle word align
         graphics2D.setPaint(fontFormatter.getFontColor());
         graphics2D.setFont(fontFormatter.getFont());
-        graphics2D.drawString("HELLLO", coords[0], coords[1]);
+        graphics2D.drawString(word, coords[0], coords[1]);
         graphics2D.dispose();
         return img;
     }
@@ -29,7 +29,7 @@ public class PictureWriter {
         int oX = (int) w / 2;
         int oY = (int) h / 2;
         // offset
-        int tmpX = simpleGenerator.generateNumberInRange(-w / 2, 0);
+        int tmpX = simpleGenerator.generateNumberInRange(-w / 2, -w / 4);
         int tmpY = simpleGenerator.generateNumberInRange(-h / 4, h / 4);
         coords[0] = oX + tmpX;
         coords[1] = oY + tmpY;
