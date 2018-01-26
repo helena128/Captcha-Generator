@@ -10,11 +10,13 @@ public class TestPictureBackground {
     }
 
     public static void go() {
-        BufferedImage image = new PicturePainter().drawPicture(500, 400, Color.blue.getTransparency());
+        BufferedImage img = new PicturePainter().getBufferedImage(200, 300);
         JFrame frame = new JFrame();
-        JLabel label = new JLabel(new ImageIcon(image));
-        frame.getContentPane().add(label, BorderLayout.CENTER);
-        frame.setSize(500, 400);
+        frame.getContentPane().setLayout(new FlowLayout());
+        frame.getContentPane().add(new JLabel(new ImageIcon(img)));
+        frame.setSize(250, 250);
         frame.setVisible(true);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

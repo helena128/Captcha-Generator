@@ -1,31 +1,22 @@
 package com.picgen.picture;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
+import java.util.Random;
 
 public class PicturePainter {
-    public /*byte[]*/ BufferedImage drawPicture(int h, int w, int color) {
-        BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-        Pixel tmpPixel = new Pixel();
-
-        for (int y = 0; y < h; y++) {
-            for (int x = 0; x < w; x++) {
-                tmpPixel.setColor(color);
-                int p = tmpPixel.getP(); // calculate colot
-                //img.setRGB(x, y, (int)Color.blue);
-
-                // get next color
-                color = getColor(tmpPixel);
-            }
-        }
+    public BufferedImage getBufferedImage(int height, int width) {
+        BufferedImage img = null;
+        int length = ((width + 5) * height) / 7;
+        byte[] imgArr = new byte[length];
+        DataBuffer dataBuffer = new DataBufferByte(imgArr, length);
+        WritableRaster rast = Raster.createPackedRaster(dataBuffer, width, height, 1, null);
+        // TODO: get normal colors - 1st with random last with lum
+        ColorModel colorModel = new IndexColorModel(1, 2, new byte[] {
+                (byte) 0, (byte) 250} ,  new byte[]  {(byte) 0,  (byte) 250 },  new byte[]  { (byte) 0, (byte) 250 });
+        img = new BufferedImage(colorModel, rast, false, null);
+        Random ran = new Random();
+        ran.nextBytes(imgArr);
         return img;
-    }
-
-    private int getColor(Pixel p) {
-        return (int)(0.299*p.getR() + 0.587*p.getG() + 0.114*p.getB());
-    }
-
-    public void paint(Graphics g, BufferedImage img) {
-
     }
 }
