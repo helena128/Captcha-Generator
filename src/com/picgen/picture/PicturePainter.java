@@ -11,12 +11,44 @@ public class PicturePainter {
         byte[] imgArr = new byte[length];
         DataBuffer dataBuffer = new DataBufferByte(imgArr, length);
         WritableRaster rast = Raster.createPackedRaster(dataBuffer, width, height, 1, null);
+
+        final int firstColor = 0xff0000;//generateFirstColor();
+        final int secondColor = generateSecondColor(firstColor);
+
+        System.out.println(">> First color: " + firstColor + "\tSecond color: " + secondColor);
+
         // TODO: get normal colors - 1st with random last with lum
         ColorModel colorModel = new IndexColorModel(1, 2, new byte[] {
-                (byte) 0, (byte) 250} ,  new byte[]  {(byte) 0,  (byte) 250 },  new byte[]  { (byte) 0, (byte) 250 });
+                (byte) firstColor, (byte) secondColor} ,
+                new byte[]  {(byte) firstColor,  (byte) secondColor },  new byte[]  { (byte) firstColor, (byte) secondColor });
         img = new BufferedImage(colorModel, rast, false, null);
         Random ran = new Random();
         ran.nextBytes(imgArr);
         return img;
+    }
+
+    /**
+     * Generates first of the two colors
+     * @return color code
+     */
+    private int generateFirstColor() {
+        Random rand = new Random();
+        return rand.nextInt(16777215);
+    }
+
+    /**
+     * Generates 2nd color based on the 1st one
+     * Uses Relative luminance formula to find the color
+     * @return color code
+     */
+    private int generateSecondColor(int firstColor) {
+        ColorComponents comp = new ColorComponents(firstColor);
+        int red = comp.getRComponent();
+        int green = comp.getGComponent();
+        int blue = comp.getBComponent();
+
+        System.out.println(">> RGB: " + red + "\t" + green + "\t" + blue + " ");
+
+        return ((int)(0.2126 * red + 0.7152 * green + 0.0722 * blue));
     }
 }
