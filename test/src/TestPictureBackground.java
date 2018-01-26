@@ -2,8 +2,10 @@ import com.picgen.GeneratorApplication;
 import com.picgen.picture.PicturePainter;
 
 import java.awt.image.BufferedImage;
-import java.util.concurrent.TimeUnit;
 
+/**
+ * Test for background
+ */
 public class TestPictureBackground {
     public static void main(String... args) {
         go();

@@ -15,10 +15,11 @@ public class Generator {
     private static final int PIC_HEIGHT = 200;
     private static final int PIC_WIDTH = 300;
 
+    // init background
     private BufferedImage old = new PicturePainter().getBufferedImage(PIC_HEIGHT, PIC_WIDTH);
 
-    private String key;
-    private BufferedImage img;
+    private String key; // captcha key
+    private BufferedImage img; // image with key
 
     public Generator() {
         this.key = new SimpleGenerator().getCaptchaString(MIN_LETTER, MAX_LETTER);

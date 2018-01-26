@@ -27,15 +27,11 @@ public class GeneratorApplication extends JFrame {
      * @param img - shows image
      */
     public static void displayImage(BufferedImage img, String title) {
-        Frame frame = new JFrame(title);
+        JFrame frame = new JFrame(title);
         JLabel label = new JLabel(new ImageIcon(img));
         frame.add(label, BorderLayout.CENTER);
         frame.setSize(FRAME_W, FRAME_H);
         frame.setVisible(true);
-        frame.addWindowListener(new WindowAdapter(){
-            public void windowClosing(WindowEvent we){
-                System.exit(0);
-            }
-        });
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

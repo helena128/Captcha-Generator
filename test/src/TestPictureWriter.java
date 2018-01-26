@@ -2,11 +2,12 @@ import com.picgen.GeneratorApplication;
 import com.picgen.picture.PicturePainter;
 import com.picgen.picture.PictureWriter;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Tests writing on the pic
+ */
 public class TestPictureWriter {
     public static void main(String... args) throws IOException {
         go();
