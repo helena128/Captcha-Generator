@@ -6,6 +6,7 @@ import java.util.Random;
  * One of the many generators that can be used to get key
  */
 public class SimpleGenerator implements Generatable {
+    private final Random random = new Random();
 
     /**
      * returns generated string for captcha
@@ -39,8 +40,7 @@ public class SimpleGenerator implements Generatable {
      * @return a random number
      */
     private int getRandomNumber(int limit) {
-        final Random randGen = new Random();
-        return randGen.nextInt(limit);
+        return random.nextInt(limit);
     }
 
     /**
@@ -62,8 +62,6 @@ public class SimpleGenerator implements Generatable {
      * @return - rnadom number between min and max
      */
     public int generateNumberInRange(int min, int max) {
-        Random random = new Random();
-        int rand = random.nextInt((max - min) + 1) + min;
-        return rand;
+        return random.nextInt((max - min) + 1) + min;
     }
 }
