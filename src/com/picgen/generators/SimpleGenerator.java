@@ -61,7 +61,8 @@ public class SimpleGenerator implements Generatable {
      * @param max - upper bound
      * @return - rnadom number between min and max
      */
-    public int generateNumberInRange(int min, int max) {
+
+    private int generateNumberInRange(int min, int max) {
         return random.nextInt((max - min) + 1) + min;
     }
 }
